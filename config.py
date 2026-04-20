@@ -1,10 +1,16 @@
-# Configuration settings for PDF input directory, Excel output directory, and scheme variants.
+import os
+from datetime import datetime
 
-# Directory where PDF files are stored
-PDF_INPUT_DIR = "./input/pdfs"
+# Configuration Settings
+CONFIG = {
+    'PDF_INPUT_DIR': 'sample_input',
+    'EXCEL_OUTPUT_DIR': 'output',
+    'TIMESTAMP_FORMAT': '%Y%m%d_%H%M%S',
+    'REGULAR_SCHEME_VARIANTS': ['Regular Growth', 'Regular Plan'],
+    'EXCLUDE_VARIANTS': ['IDCW', 'Bonus', 'Direct', 'Dividend'],
+    'EXTRACTION_TIMEOUT': 30,
+}
 
-# Directory where Excel files will be outputted
-EXCEL_OUTPUT_DIR = "./output/excels"
-
-# Variants of the schemes used in the extractor
-SCHEME_VARIANTS = ["variant_1", "variant_2", "variant_3"]
+# Create directories if they don't exist
+os.makedirs(CONFIG['PDF_INPUT_DIR'], exist_ok=True)
+os.makedirs(CONFIG['EXCEL_OUTPUT_DIR'], exist_ok=True)
